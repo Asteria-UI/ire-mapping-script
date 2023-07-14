@@ -1189,7 +1189,7 @@ mmp.locateAndEchoInternal(multimatches[2][3], multimatches[2][2])</script>
 					<script>mmp.pdb_lastupdate = {}</script>
 					<triggerType>0</triggerType>
 					<conditonLineDelta>5</conditonLineDelta>
-					<mStayOpen>1000</mStayOpen>
+					<mStayOpen>999</mStayOpen>
 					<mCommand></mCommand>
 					<packageName></packageName>
 					<mFgColor>#ff0000</mFgColor>
@@ -2035,6 +2035,31 @@ mmp.game = "asteria"</script>
 					<colorTriggerBgColor>#000000</colorTriggerBgColor>
 					<regexCodeList>
 						<string>Welcome to Asteria.</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>3</integer>
+					</regexCodePropertyList>
+				</Trigger>
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>Combat Speedwalk Stop</name>
+					<script>if mmp.autowalking and not mmp.paused then
+  mmp.pause()
+  mmp.echo("Can't continue walking in combat. Use 'mmp' to continue walking after combat.")
+else
+  return
+end</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>0</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#ff0000</mFgColor>
+					<mBgColor>#ffff00</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>You cannot move while in combat. RETREAT first.</string>
 					</regexCodeList>
 					<regexCodePropertyList>
 						<integer>3</integer>
@@ -4130,8 +4155,9 @@ mmp.echo("We're connected to StickMUD.")</script>
 						<string>There is a door in the way.</string>
 						<string>A closed door is in the way. You need to OPEN DOOR</string>
 						<string>There is an? (?:walnut|pine|oak|iron|reinforced) door in the way.</string>
-						<string>The door to the (\w+) is closed.</string>
+						<string>The (?:gate|door) to the \w+ is closed.</string>
 						<string>There is a closed door in the way.</string>
+						<string>The \w+ (?:gate|door) to the \w+ is closed.</string>
 					</regexCodeList>
 					<regexCodePropertyList>
 						<integer>2</integer>
@@ -4140,6 +4166,7 @@ mmp.echo("We're connected to StickMUD.")</script>
 						<integer>1</integer>
 						<integer>1</integer>
 						<integer>3</integer>
+						<integer>1</integer>
 					</regexCodePropertyList>
 				</Trigger>
 			</TriggerGroup>
